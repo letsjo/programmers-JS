@@ -10,16 +10,19 @@
 // 입출력 예
 // a	b	result
 // 5	24	"TUE"
-
-console.log(solution(1,1));
+// 2  5 "FRI"
+console.log(solution(2,5));
 
 function solution(a, b) {
-    weeks=["FRI","SAT","SUN","MON","TUE","WED","THU"];
-    months=[31,29,31,30,31,30,31,31,30,31,30,31];
-    let sum_date = months.reduce((sum_date,x,i) => {
-      a==i?months.splice(1):sum_date+=x;
-      return sum_date
-    })
-    console.log(sum_date)
-    return weeks[(sum_date+b)%7-1]
+    weeks=["THU","FRI","SAT","SUN","MON","TUE","WED"];
+    months=[0,31,29,31,30,31,30,31,31,30,31,30];
+    let sum_date = 0;
+    for (let i= 0; i<a; i++){
+      sum_date += months[i];
+    }
+    sum_date += b;
+    console.log(sum_date);
+    console.log((sum_date)%7)
+    return weeks[(sum_date)%7]
 }
+
