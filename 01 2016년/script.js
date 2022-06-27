@@ -25,4 +25,3 @@ function solution(a, b) {
     console.log((sum_date)%7)
     return weeks[(sum_date)%7]
 }
-

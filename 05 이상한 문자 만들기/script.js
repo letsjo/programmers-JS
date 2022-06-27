@@ -13,9 +13,25 @@
 
 
 
-let s = "try hello world";
+let s = "trygdasdasdafjgios adjfapodsgg hasasdasdsasfsasffffffsaadello worlasfdasdd";
 
-console.log(solution(s));
+console.log(one_for(s));
+
+function one_for(s) {   
+  var answer = "";
+  let odd = 1;
+  s = s.split("").map((x)=>{
+    // console.log(x,odd)
+    if(x==" ") {
+      answer+=" ";
+      (odd)%2!=1?odd++:0;
+    } else {
+      (odd)%2==1?answer+=x.toUpperCase():answer+=x.toLowerCase();
+      odd++;
+    }
+  })
+  return answer;
+}
 
 function solution(s) {   
   var answer = s;

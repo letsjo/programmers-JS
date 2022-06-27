@@ -43,3 +43,9 @@ function solution(d, budget) {
     })
     return answer;
 }
+
+// 베스트 답안
+
+function solution(d, budget) {
+    return ~(~d.sort((a,b)=>a-b).map(v => budget -= v).findIndex(v => v < 0) || ~d.length);
+}

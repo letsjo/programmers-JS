@@ -100,9 +100,9 @@ console.log(solution(new_id));
 
 function solution(new_id) {
   let answer = new_id.toLowerCase() // 1단계
-  answer = answer.replace(/[^a-z0-9-_.]/gm,""); // 2단계
-  answer = answer.replace(/[.]+/gm,"."); // 3단계
-  answer = answer.replace(/^[.]/gm,"").replace(/[.]$/gm,""); // 4단계
+  answer = answer.replace(/[^a-z0-9-_.]/g,""); // 2단계
+  answer = answer.replace(/[.]+/g,"."); // 3단계
+  answer = answer.replace(/^[.]/g,"").replace(/[.]$/g,""); // 4단계
   answer==""?answer="aaa" // 5단계
   : answer.length>=16? answer = answer.slice(0,15).replace(/[.]$/gm,"")
   : answer.length<=2? answer += answer[answer.length-1].repeat(3-answer.length):answer
