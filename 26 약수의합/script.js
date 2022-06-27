@@ -19,9 +19,9 @@ n= 3000; // n은 0 이상 3000이하인 정수입니다.
 console.log(solution(n));
 
 function solution(n) {
-let answer = 0;
-for (let i=1; i<=n; i++) {
-if (n%i==0) answer += i;
-}
-return answer;
+   let answer = 0;
+   for (let i=1; i<=n; i++) {
+      if (n%i==0) answer += i;
+   }
+   return answer;
 }
