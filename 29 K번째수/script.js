@@ -28,8 +28,7 @@ console.log(solution(array, commands));
 
 function solution(array, commands) {
     let answer = [];
-    // let main_array = [...array];
-
+    
     commands.map((x)=>{
        answer.push(array.slice(x[0]-1,x[1]).sort((a,b)=>a-b)[x[2]-1]);
     })
