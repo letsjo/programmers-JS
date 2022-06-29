@@ -56,33 +56,28 @@ function solution(str1, str2) {
 
     if (arr1_length>=arr2_length) {                       
         for(i=0; i<=arr1_length; i++) {
-            if(arr2.indexOf(arr1[i])!=-1){
-                // console.log(arr1[i],'는 교집합의 원소입니다.')
+            if(arr2.indexOf(arr1[i])!=-1) {
                 arr2.splice(arr2.indexOf(arr1[i]),1)
-                inter_length++
+                inter_length++;
             }
         } 
     } else {
         for(i=0; i<=arr2_length; i++){
-            if(arr1.indexOf(arr2[i])!=-1){
-            // console.log(arr2[i],'는 교집합의 원소입니다.')
+            if(arr1.indexOf(arr2[i])!=-1) {
             arr1.splice(arr1.indexOf(arr2[i]),1)
-            inter_length++                        
+            inter_length++;                       
            }
         }
     }
-    if(inter_length==0 && (arr1_length + arr2_length - inter_length == 0)){
-        answer = 65536;
+    if(inter_length==0 && (arr1_length + arr2_length - inter_length == 0)) {
+        return 65536;
     } else {
-        union_length = arr1_length + arr2_length - inter_length;
-        answer = Math.floor(inter_length/union_length*65536);
+        return Math.floor(inter_length/(arr1_length + arr2_length - inter_length)*65536);
     }
-
-    return answer;
 }
 
-function two_slice(str){
-    let arr=[]
+function two_slice(str) {
+    let arr=[];
     str.split("").map((x,index)=>{
         if(str[index+1]!=undefined) arr.push(x+str[index+1]);
     });
