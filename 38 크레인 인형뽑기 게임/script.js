@@ -31,40 +31,30 @@
 
 // 인형의 처음 상태는 문제에 주어진 예시와 같습니다. 크레인이 [1, 5, 3, 5, 1, 2, 1, 4] 번 위치에서 차례대로 인형을 집어서 바구니에 옮겨 담은 후, 상태는 아래 그림과 같으며 바구니에 담는 과정에서 터트려져 사라진 인형은 4개 입니다.
 
-let board = [];
-let moves = [];
+let board = [[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]];
+let moves = [1,5,3,5,1,2,1,4];
+
+// let tong = [1,2,3]
+// tong.splice[1,1]
+// console.log(tong);
+console.log(solution(board,moves));
 
 
-console.log(solution(n,lost, reserve));
-
-function solution(n, lost, reserve) {
-    let answer = [];
-    reserve.sort((a,b)=>a-b);
-    
-    for(let i = 1; i <= n; i++) {
-        if (lost.indexOf(i)==-1){                   // i 가 체육복을 안잃어버렸으면?
-            answer.push(i);
-        } else if(reserve.some((x,index,arr)=> {   // i가 체육복이 없으면?
-            // 그외에는 여기로 some이 True or False
-            if (x==i) {                    // 
-                // console.log(reserve);
-                // console.log(arr);
-                arr.splice(index,1);
-                // console.log(reserve);
-                // console.log(arr);
-                return true;
-            } else if(x==i-1 && lost.indexOf(i-1)==-1) {
-                arr.splice(index,1);
-                return true;
-            } else if(x==i+1 && lost.indexOf(i+1)==-1) {
-                arr.splice(index,1);
-                return true;
-            } else {
-                return false;
+function solution(board, moves) {
+    let tong = [];
+    let score = 0;
+    moves.map((x)=>{
+        for(let i=0; i<board.length; i++){
+            if (board[i][x-1]>0){
+                tong.push(board[i][x-1]);
+                board[i][x-1] = 0;
+                if (tong[tong.length -1]==tong[tong.length-2]){
+                    tong.splice(-2,2);
+                    score +=2;
+                }
+                break;
             }
-        }) ) {
-            answer.push(i);
         }
-    }
-    return answer.length
+    })
+    return score;
 }

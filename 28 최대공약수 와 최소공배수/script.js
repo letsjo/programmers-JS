@@ -14,25 +14,21 @@
 // 입출력 예 #2
 // 자연수 2와 5의 최대공약수는 1, 최소공배수는 10이므로 [1, 10]을 리턴해야 합니다.
 
-let n = 12; // 두 수는 1이상 1000000이하의 자연수입니다.
-let m = 3; // 두 수는 1이상 1000000이하의 자연수입니다.
+let n = 2; // 두 수는 1이상 1000000이하의 자연수입니다.
+let m = 5; // 두 수는 1이상 1000000이하의 자연수입니다.
 
 console.log(solution(n, m));
 
 function solution(n, m) {
-    let tmp = 0;
-    if (m>n) {
-        tmp = m;
-        m = n;
-        n = tmp;
-    }
-    while (true){
-        tmp = n%m;
-        if (tmp==0) break;
-        n = m;
-        m = tmp;
-    }
-    console.log(n);
+    biggest = euclidean(n,m);
+    smallest = biggest * (n/biggest) * (m/biggest);
+    return [biggest,smallest];
+}
+
+function euclidean(n,m){
+    let r = m % n;
+    if (r == 0) return n;
+    return euclidean(r,n);
 }
 
 // 유클리드 호제법(최대 공약수 찾기)
@@ -42,6 +38,9 @@ function solution(n, m) {
 
 // 이과정을 계속 반복하여 어느 한쪽이 나누어 떨어질때까지 반복합니다.
 // 이직전 얻은 나머지가 최대 공약수 입니다.
+
+// 최소공배수
+// 
 
 // 1254와 582의 최대공약수는 6!
 
