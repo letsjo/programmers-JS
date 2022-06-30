@@ -49,10 +49,9 @@ function solution(month, day){
 
     if (sum_date>365) {
         sum_date -= 365
-    };
+    }
 
     // 내년으로 넘어갔나요?
-
     for(let i=1; i<=month_date.length; i++){    // 4월 1일부터 26일 이후 몇인가?
         if(sum_date>month_date[i]){         // 116일은 1월달 안에 있는가? 116>31
             sum_date -= month_date[i];      // 1월 달 = 116-31  =  2월 1일부터 시작 

@@ -17,8 +17,13 @@
 
 // 1, 2, 3이 numbers에 없으므로, 1 + 2 + 3 = 6을 return 해야 합니다.
 
-
-function solution(s) {
-    return +s
+function solution(numbers) {
+    let answer = 0;
+    for(let i = 0; i < 10; i++) {
+        numbers.indexOf(i) == -1 ? answer += i:0
+    }
+    return answer;
 }
 
+let numbers=[1,2,3,4,6,7,8,0];
+console.log(solution(numbers));
