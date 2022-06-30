@@ -37,49 +37,55 @@
 // aa1+aa2	AAAA12	43690
 // E=M*C^2	e=m*c^2	65536
 
-let str1="aa1+aa2";
-let str2="AAAA12";
+let str1 = "aa1+aa2";
+let str2 = "AAAA12";
 
 console.log(solution(str1, str2));
 
 function solution(str1, str2) {
-    str1=str1.toUpperCase();
-    str2=str2.toUpperCase();
+  str1 = str1.toUpperCase();
+  str2 = str2.toUpperCase();
 
-    let inter_length = 0;
+  let inter_length = 0;
 
-    arr1 = two_slice(str1).filter(x=> x.length == x.replace(/[^A-Z]/g,"").length);
-    arr2 = two_slice(str2).filter(x=> x.length == x.replace(/[^A-Z]/g,"").length);
+  arr1 = two_slice(str1).filter(
+    (x) => x.length == x.replace(/[^A-Z]/g, "").length
+  );
+  arr2 = two_slice(str2).filter(
+    (x) => x.length == x.replace(/[^A-Z]/g, "").length
+  );
 
-    let arr1_length = arr1.length;
-    let arr2_length = arr2.length;
+  let arr1_length = arr1.length;
+  let arr2_length = arr2.length;
 
-    if (arr1_length>=arr2_length) {                       
-        for(i=0; i<=arr1_length; i++) {
-            if(arr2.indexOf(arr1[i])!=-1) {
-                arr2.splice(arr2.indexOf(arr1[i]),1)
-                inter_length++;
-            }
-        } 
-    } else {
-        for(i=0; i<=arr2_length; i++){
-            if(arr1.indexOf(arr2[i])!=-1) {
-            arr1.splice(arr1.indexOf(arr2[i]),1)
-            inter_length++;                       
-           }
-        }
+  if (arr1_length >= arr2_length) {
+    for (i = 0; i <= arr1_length; i++) {
+      if (arr2.indexOf(arr1[i]) != -1) {
+        arr2.splice(arr2.indexOf(arr1[i]), 1);
+        inter_length++;
+      }
     }
-    if(inter_length==0 && (arr1_length + arr2_length - inter_length == 0)) {
-        return 65536;
-    } else {
-        return Math.floor(inter_length/(arr1_length + arr2_length - inter_length)*65536);
+  } else {
+    for (i = 0; i <= arr2_length; i++) {
+      if (arr1.indexOf(arr2[i]) != -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);
+        inter_length++;
+      }
     }
+  }
+  if (inter_length == 0 && arr1_length + arr2_length - inter_length == 0) {
+    return 65536;
+  } else {
+    return Math.floor(
+      (inter_length / (arr1_length + arr2_length - inter_length)) * 65536
+    );
+  }
 }
 
 function two_slice(str) {
-    let arr=[];
-    str.split("").map((x,index)=>{
-        if(str[index+1]!=undefined) arr.push(x+str[index+1]);
-    });
-    return arr;
+  let arr = [];
+  str.split("").map((x, index) => {
+    if (str[index + 1] != undefined) arr.push(x + str[index + 1]);
+  });
+  return arr;
 }
