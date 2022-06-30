@@ -29,8 +29,16 @@ function solution(arr1, arr2, signs){
 // let arr1=[[1,2],[2,3]];
 // let arr2=[[3,4],[5,6]];
 // let signs=[[true,true],[true,false]]
+// result = [[4,6],[7,-9]]
+
+// let arr1=[[1],[2]];
+// let arr2=[[3],[4]];
+// let signs=[[false],[false]]
+// result = [[-4],[-6]]
 
 let arr1=[[5,7,1],[2,3,5]];
 let arr2=[[5,1,6],[7,5,6]];
 let signs=[[true,true,false],[false,true,false]];
+// result = [[10,8,-7],[-9,8,-11]];
+
 console.log(solution(arr1, arr2, signs));

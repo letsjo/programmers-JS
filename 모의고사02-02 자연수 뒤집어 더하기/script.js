@@ -23,3 +23,6 @@ function solution(n){
     return answer
 }
 console.log(solution(718253))
+
+// n=1532576 //"6+7+5+2+3+5+1=29"
+// n=12345   //"5+4+3+2+1=15"
