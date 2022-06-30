@@ -23,6 +23,8 @@
 // 3	4
 // 4	11
 
+console.log("qwer".slice(1,2))
+
 Number.prototype.fillZero = function(width){
     let n = String(this); // 문자열로 변경
     return n.length>=width?n:new Array(width-n.length+1).join('0')+n;
