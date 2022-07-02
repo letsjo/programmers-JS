@@ -114,7 +114,9 @@ function solution(id_list, report, k) {
 }
 
 
-
+// let id_list = ["muzi", "frodo", "apeach", "neo"];
+// let report = ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"];
+// let k = 2;
 function solution_2(id_list, report_list, k) {
   // [{id:muzi, reporters: [apeach,neo], count:2},{id:frodo, reporter: [neo], count:1}]
   let data_list = [];

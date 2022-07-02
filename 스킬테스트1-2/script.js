@@ -10,7 +10,7 @@
 
 s="001a34";
 
-console.log(solution(s));
+// console.log(solution(s));
 
 function solution(s) {
     return s.length==4||s.length==6?(s.length == s.replace(/[^0-9]/gm,"").length?true:false):false;
