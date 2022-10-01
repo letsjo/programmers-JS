@@ -56,7 +56,7 @@ function solution(progresses, speeds) {
         completed = false;
       }
     };
-    arr_anwser.push(Number(anwser));
+    arr_anwser.push(anwser);
   }
   return arr_anwser;
 }
