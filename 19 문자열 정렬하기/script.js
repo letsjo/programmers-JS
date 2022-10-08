@@ -26,7 +26,7 @@ let n = 1;
 console.log(solution(strings, n));
 
 function solution(strings, n) {
-  answer = strings.map((string) => {
+  var answer = strings.map((string) => {
     string = string[n] + string;
     console.log(string);
     return string;
