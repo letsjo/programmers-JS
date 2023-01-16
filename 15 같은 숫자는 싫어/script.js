@@ -18,17 +18,33 @@
 
 arr=[4,4,4,3,3];
 
-console.log(solution(arr))
-
+console.log(solution("zyelleyyez"));
+// console.log(undefined!=3);
 
 function solution(arr)
 {
-  let answer = [];
-  for(let i=0; i<arr.length; i++){
-    arr[i]!=arr[i+1]?answer.push(arr[i]):0;
+  let answer = [arr[0]];
+  for(let i=1; i<arr.length; i++){
+    let top = answer[answer.length-1];
+    if(arr[i]!=arr[i+1]){
+      top!=arr[i]?answer.push(arr[i]):answer.pop();
+    } else if(top!=arr[i] && arr[i]==arr[i+1]){
+      answer.push(arr[i]);
+    }
   }
-  return answer;
+  return answer.join("");
 }
+
+
+
+// function solution(arr)
+// {
+//   let answer = [];
+//   for(let i=0; i<arr.length; i++){
+//     arr[i]!=arr[i+1]?answer.push(arr[i]):0;
+//   }
+//   return answer;
+// }
 
 // 좋아요 높은 코드
 
