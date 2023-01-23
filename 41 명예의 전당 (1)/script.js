@@ -1,3 +1,4 @@
+
 function solution(k, score) {
     let scoreList = [];
     const answer = [];
