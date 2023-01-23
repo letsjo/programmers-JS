@@ -77,61 +77,36 @@ console.log(
     ["2021.05.02 A", "2021.07.01 B", "2022.02.19 C", "2022.02.20 C"]
   )
 );
-// [배열번호,값]
+
 function solution(today, terms, privacies) {
-  var answer = [];
-  var today_arr = today.split(".");
-  var terms_dic = {};
+  const termsArr = terms.map((term) => {
+    const arr = term.split(' ');
+    return [arr[0], Number(arr[1])];
+  });
+  const termsMap = new Map(termsArr);
+  const [nowYear, nowMonth, nowDay] = today.split('.').map(Number);
+  const answer = [];
+  privacies.forEach((privace, index) => {
+    const [date, termType] = privace.split(' ');
+    let [year, month, day] = date.split('.').map(Number);
 
-  // 오늘날짜를 빼온다
-  for(let i = 0; i < today_arr.length; i++) {
-    today_arr[i] = Number(today_arr[i]);
-  }
+    month += termsMap.get(termType);
 
-  //
-  for (let i = 0; i < terms.length; i++) {
-    var terms_arr = terms[i].split(" ");
-    terms_dic[terms_arr[0]] = terms_arr[1];
-  }
-
-  for (let num = 0; num < privacies.length; num++) {
-    var privacies_info = privacies[num].split(" ");
-    var privacie_arr = privacies_info[0].split(".");
-
-    for(let i=0; i < privacie_arr.length; i++) {
-      privacie_arr[i] = Number(privacie_arr[i]);
-    }
-
-    privacie_arr[1] += Number(terms_dic[privacies_info[1]]);
-
-    if(privacie_arr[1]>12){
-      var overMonth = parseInt(privacie_arr[1]/12);
-      
-      privacie_arr[0] += overMonth;
-      privacie_arr[1] -= 12*overMonth;
-    }
-
-    if(privacie_arr[2]==1){
-      if(privacie_arr[1]==1){
-        privacie_arr[0]-=1;
-        privacie_arr[1]=12;
+    if (month > 12) {
+      if (month % 12 === 0) {
+        year += parseInt(month / 12) - 1;
+        month = 12;
       } else {
-        privacie_arr[1]-=1;
+        year += parseInt(month / 12);
+        month %= 12;
       }
-      privacie_arr[2]=28;
-    } else {
-      privacie_arr[2]-=1;
+
     }
 
-    for (let j=0; j<3; j++){
-      if(privacie_arr[j]<today_arr[j]){
-        answer.push(num+1);
-        break;
-      }
-    }
-
-    console.log(privacie_arr);
-  }
+    if (nowYear > year) return answer.push(index + 1);
+    if (nowYear === year && nowMonth > month) return answer.push(index + 1);
+    if (nowYear === year && nowMonth === month && nowDay >= day) return answer.push(index + 1);
+  })
 
   return answer;
 }
