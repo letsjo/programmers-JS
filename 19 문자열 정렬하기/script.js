@@ -20,12 +20,25 @@
 // "abce"와 "abcd", "cdx"의 2번째 인덱스 값은 "c", "c", "x"입니다. 따라서 정렬 후에는 "cdx"가 가장 뒤에 위치합니다. "abce"와 "abcd"는 사전순으로 정렬하면 "abcd"가 우선하므로, 답은 ["abcd", "abce", "cdx"] 입니다.
 
 
-let strings = ["sun", "bed", "car"];
-let n = 1;
-
+let strings = ["abce", "abcd", "cdx"];
+let n = 2;
+//["abcd", "abce", "cdx"]
 console.log(solution(strings, n));
 
 function solution(strings, n) {
+  return strings.sort((a, b) => {
+    if (a[n] > b[n]) return 1;
+    if (b[n] > a[n]) return -1;
+    if (a[n] === b[n]) {
+      if (a > b) return 1;
+      if (a < b) return -1;
+      return 0;
+    }
+  });
+}
+
+
+function solution_2(strings, n) {
   var answer = strings.map((string) => {
     string = string[n] + string;
     console.log(string);
@@ -35,7 +48,7 @@ function solution(strings, n) {
   answer = answer.map((string) => {
     return string.substr(1);
   })
-  
+
   return answer;
 }
 
@@ -45,19 +58,19 @@ function solution(strings, n) {
 
 
 function solution_best(strings, n) {
-    // strings 배열
-    // n 번째 문자열 비교
-    return strings.sort((s1, s2) => s1[n] === s2[n] ? s1.localeCompare(s2) : s1[n].localeCompare(s2[n]));
+  // strings 배열
+  // n 번째 문자열 비교
+  return strings.sort((s1, s2) => s1[n] === s2[n] ? s1.localeCompare(s2) : s1[n].localeCompare(s2[n]));
 }
 
 // localeCompare(StringcompareString[, Stringlocales[, Objectoptions]])
-// 인수로 지정된 문자열이 정렬상 string 객체의 문자열 뒤에 있으면 음수, 
+// 인수로 지정된 문자열이 정렬상 string 객체의 문자열 뒤에 있으면 음수,
 // 그 반대의 경우는 양수, 동등한 경우에는 0을 반환한다.
 
 // // var str = "JavaScript";
 
 // // 알파벳 순서 정렬상 인수 'apple'은 'JavaScript'보다는 앞쪽에 있다.
-// console.log(str.localeCompare("apple")); 
+// console.log(str.localeCompare("apple"));
 // 결과값 > 1
 // // 알파벳 순서 정렬상 인수 'kiss'은 'JavaScript'보다는 뒤쪽에 있다.
 // console.log(str.localeCompare("kiss"));
