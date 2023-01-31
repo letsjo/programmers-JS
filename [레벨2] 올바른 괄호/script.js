@@ -1,16 +1,14 @@
-function solution(n) {
-    let answer = 0;
-
-    for(let i = 0; i <= n; i++){
-        let sum = 0;
-        for(let j = i+1; j <= n; j++){
-            sum += j;
-            if (n === sum) answer += 1;
-            if (n < sum) break;
-        }
-    }
-    
-    return answer;
+function solution(s) {
+    let leftCount = 0;
+    let rightCount = 0;
+    const lastIndex = s.length - 1;
+    return s.split('').every((letter, index) => {
+        if (letter === '(') leftCount += 1;
+        if (letter === ')') rightCount += 1;
+        if (lastIndex === index && leftCount !== rightCount) return false;
+        if (leftCount >= rightCount) return true;
+        return false;
+    });
 }
 
-console.log(solution(15));
+console.log(solution("()()"));
