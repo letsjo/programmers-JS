@@ -1,10 +1,13 @@
-// [JavaScript 알고리즘 100일 챌린지]
-// https://www.youtube.com/playlist?list=PLkfUwwo13dlWZxOdbvMhkzhAowaiEjuGS
+/**
+ * ! [JavaScript 알고리즘 100일 챌린지]
+ * https://www.youtube.com/playlist?list=PLkfUwwo13dlWZxOdbvMhkzhAowaiEjuGS
+ * 
+ * ! 문제
+ * https://school.programmers.co.kr/learn/courses/30/lessons/120807
+ */
 
-// 문제
-// https://school.programmers.co.kr/learn/courses/30/lessons/120805
+// 내가 푼 정답
 
-// 내가 푼 풀이
 function solution(num1, num2) {
     return Math.floor(num1 / num2);
 }
@@ -18,7 +21,12 @@ function recommend(num1, num2) {
     return answer;
 }
 
+console.log(recommend(7, 2));
+
+
 /**
+ * ! 설명
+ * 
  * ~n 은 어떻게 될까?
  * 
  * * 5 (1001) -> 0110 로 변경
@@ -31,5 +39,3 @@ function recommend(num1, num2) {
  * 
  * ~~5.1 => 5
  */
-
-console.log(recommend(7, 2));
